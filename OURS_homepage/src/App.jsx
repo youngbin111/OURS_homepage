@@ -1,5 +1,7 @@
 import "./App.css";
+import { BrowserRouter as Router, Routes, Route,Link } from "react-router-dom";
 import Sidebar from "./components/ui/Sidebar";
+import TopBarComponent from "./components/ui/TopBar";
 
 function App() {
   const title = "총학생회";
@@ -13,10 +15,27 @@ function App() {
       "소통 부문": "https://www.naver.com/",
     },
   };
+
   return (
-    <>
+    <Router>
+      <TopBarComponent />
       <Sidebar title={title} data={data} />
-    </>
+      <Routes>
+        {/* 외부 링크로 변경 */}
+        <Route
+          path="/"
+          element={<Link to="https://www.naver.com/">Home</Link>}
+        />
+        <Route
+          path="/student-council"
+          element={<Link to="https://www.naver.com/">총학생회</Link>}
+        />
+        <Route
+          path="/student-organizations"
+          element={<Link to="https://www.naver.com/">학생자치기구</Link>}
+        />
+        </Routes>
+    </Router>
   );
 }
 
