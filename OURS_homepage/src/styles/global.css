@@ -1,0 +1,132 @@
+/* Reset CSS: 브라우저 기본 스타일 초기화 */
+html,
+body,
+div,
+span,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+a,
+address,
+img,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+footer,
+header,
+nav,
+section,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 요소 디스플레이 초기화 */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+/* 리스트 스타일 제거 */
+ol,
+ul {
+  list-style: none;
+}
+
+/* 테이블 초기화 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* 기본 박스 모델 설정 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reset 끝 */
+
+/* Base 스타일 설정 */
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background: #fff;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* 링크 초기화 */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 이미지 초기화 */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 추가 레이아웃 구성 */
+html,
+body {
+  height: 100%; /* 전체 높이를 보장 */
+  margin: 0; /* 기본 여백 제거 */
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  display: flex;
+  flex-direction: column; /* 상하 정렬 */
+  min-height: 100%; /* 최소 높이를 화면 전체로 설정 */
+}
+
+main {
+  flex: 1; /* 콘텐츠 영역이 남은 공간을 채움 */
+}
