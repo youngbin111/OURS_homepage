@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route,Link,useLocation } from "react-router-dom";
-import Sidebar from "./components/ui/Sidebar";
-import TopBarComponent from "./components/ui/TopBar";
+import Sidebar from "./components/layout/Sidebar.jsx";
+import TopBarComponent from "./components/layout/TopBar.jsx";
 import MainPage from "./pages/main_page.jsx"; //메인페이지
 
 function App() {
