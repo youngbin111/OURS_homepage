@@ -1,8 +1,31 @@
-import "./App.css";
+import "./styles/global.css";
 import { BrowserRouter as Router, Routes, Route,Link,useLocation } from "react-router-dom";
-import Sidebar from "./components/layout/Sidebar.jsx";
+import Sidebar from "./components/layout/SideBar.jsx";
 import TopBarComponent from "./components/layout/TopBar.jsx";
+import Footer from "./components/layout/Footer.jsx";
+import Heart from "./components/layout/Heart.jsx";
 import MainPage from "./pages/main_page.jsx"; //메인페이지
+
+import Intro from "./pages/council/intro.jsx"; // 총학생회 소개 페이지
+import News from "./pages/council/news.jsx"; // 소식 페이지
+import OrganChart from "./pages/council/organChart.jsx"; // 조직도 페이지
+import Promise from "./pages/council/promise.jsx"; // 공약사항 페이지
+
+import CentralUnion from "./pages/association/centralUnion.jsx"; // 중앙운영위원회 페이지
+import ExtendedUnion from "./pages/association/extendedUnion.jsx"; // 확대운영위원회 페이지
+
+import Partnership from "./pages/welfare/partnership.jsx"; // 제휴 페이지
+import Goods from "./pages/welfare/goods.jsx"; // 굿즈 페이지
+import Bus from "./pages/welfare/bus.jsx";//버스펭ㅣ지
+
+import Require from "./pages/communication/require.jsx";//청원
+import Survey from "./pages/communication/survey.jsx";//설문조사
+
+import Meetings from "./pages/datum/meetings.jsx";//회의록
+import StudentFee from "./pages/datum/studentFee.jsx";//총학생회비
+import ClassFee from "./pages/datum/classFee.jsx";//자치회비(과학생회비)
+import Club from "./pages/datum/club.jsx";//동아리리
+
 
 function App() {
   const title = "총학생회";
@@ -27,19 +50,42 @@ function App() {
 function AppContent({ data, title }) {
   const location = useLocation(); // 현재 경로 추적
   const hideSidebar = location.pathname === "/"; 
+  const hideHeart = location.pathname === "/";
+
   return (
     <div>
       <TopBarComponent style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 2 }} />
       {/* 메인 페이지가 아닌 경우에만 사이드바를 렌더링 */}
       {!hideSidebar && <Sidebar title={title} data={data} style={{ position: "fixed", top: "60px", left: 0, zIndex: 1 }}  />}
+      {!hideHeart && <Heart>
       <Routes>
         {/* 기본 경로인 /에 MainPage 컴포넌트 설정 */}
         <Route path="/" element={<MainPage />} />
         
-        {/* 사이드바가 포함된 다른 페이지들 */}
-        <Route path="/student-council" element={<Link to="https://www.naver.com/">총학생회</Link>} />
-        <Route path="/student-organizations" element={<Link to="https://www.naver.com/">학생자치기구</Link>} />
+        {/* 각 메뉴 항목에 대한 Route 설정 */}
+        <Route path="/council/intro" element={<Intro />} />
+        <Route path="/council/news" element={<News />} />
+        <Route path="/council/organChart" element={<OrganChart />} />
+        <Route path="/council/promise" element={<Promise />} />
+
+        <Route path="/association/centralUnion" element={<CentralUnion />} />
+        <Route path="/association/extendedUnion" element={<ExtendedUnion />} />
+
+        <Route path="/welfare/partnership" element={<Partnership />} />
+        <Route path="/welfare/goods" element={<Goods />} />
+        <Route path="/welfare/bus" element={<Bus />} />
+
+        <Route path="/communication/require" element={<Require />} />
+        <Route path="/communication/survey" element={<Survey />} />
+
+        <Route path="/datum/meetings" element={<Meetings />} />
+        <Route path="/datum/studentFee" element={<StudentFee />} />
+        <Route path="/datum/classFee" element={<ClassFee />} />
+        <Route path="/datum/club" element={<Club />} />
+
       </Routes>
+      </Heart>}
+      <Footer></Footer>
     </div>
     
   );

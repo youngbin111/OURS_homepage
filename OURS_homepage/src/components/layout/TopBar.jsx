@@ -11,9 +11,9 @@ const NavyBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: fixed;
-  top: 0;
-  left: 0;
+  //position: relative;
+  //top: 0;
+  //left: 0;
   width: 100%;
   z-index: 1000;
 `;
@@ -25,9 +25,9 @@ const WhiteBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: fixed;
-  top: 40px;
-  left: 0;
+  //position: relative;
+  //top: 40px;
+  //left: 0;
   width: 100%;
   z-index: 999;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
@@ -124,8 +124,7 @@ const SubMenuItem = styled(Link)`
   font-size: 10px;
   text-align: left;
   text-decoration: none;
-  white-space: pre-wrap;//줄바꿈
-  //word-wrap: break-word;//단어 길어도 줄 바꿈
+  display: block;
   &:hover {
     color: #071d49;
   }
