@@ -1,7 +1,8 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route,Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route,Link,useLocation } from "react-router-dom";
 import Sidebar from "./components/ui/Sidebar";
 import TopBarComponent from "./components/ui/TopBar";
+import MainPage from "./pages/main_page.jsx"; //메인페이지
 
 function App() {
   const title = "총학생회";
@@ -18,24 +19,29 @@ function App() {
 
   return (
     <Router>
-      <TopBarComponent />
-      <Sidebar title={title} data={data} />
-      <Routes>
-        {/* 외부 링크로 변경 */}
-        <Route
-          path="/"
-          element={<Link to="https://www.naver.com/">Home</Link>}
-        />
-        <Route
-          path="/student-council"
-          element={<Link to="https://www.naver.com/">총학생회</Link>}
-        />
-        <Route
-          path="/student-organizations"
-          element={<Link to="https://www.naver.com/">학생자치기구</Link>}
-        />
-        </Routes>
+      <AppContent data={data} title={title} />
     </Router>
+  );
+}
+
+function AppContent({ data, title }) {
+  const location = useLocation(); // 현재 경로 추적
+  const hideSidebar = location.pathname === "/"; 
+  return (
+    <div>
+      <TopBarComponent style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 2 }} />
+      {/* 메인 페이지가 아닌 경우에만 사이드바를 렌더링 */}
+      {!hideSidebar && <Sidebar title={title} data={data} style={{ position: "fixed", top: "60px", left: 0, zIndex: 1 }}  />}
+      <Routes>
+        {/* 기본 경로인 /에 MainPage 컴포넌트 설정 */}
+        <Route path="/" element={<MainPage />} />
+        
+        {/* 사이드바가 포함된 다른 페이지들 */}
+        <Route path="/student-council" element={<Link to="https://www.naver.com/">총학생회</Link>} />
+        <Route path="/student-organizations" element={<Link to="https://www.naver.com/">학생자치기구</Link>} />
+      </Routes>
+    </div>
+    
   );
 }
 
