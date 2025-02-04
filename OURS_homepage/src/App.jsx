@@ -2,25 +2,20 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
   useLocation,
 } from "react-router-dom";
-import Sidebar from "./components/layout/Sidebar";
 import TopBarComponent from "./components/layout/Topbar";
-import MainPage from "./pages/main_page.jsx"; //메인페이지
+import MainPage from "./pages/main_page.jsx"; // 메인 페이지
 import Footer from "./components/layout/Footer.jsx";
+import MainContainer from "./components/layout/MainContainer.jsx";
+import "./styles/global.css";
 
 function App() {
   const title = "총학생회";
   const data = {
-    "총학생회 소개": "https://www.naver.com/",
-    조직도: "https://www.naver.com/",
-    공약사항: {
-      "시설 부문": "https://www.naver.com/",
-      "교육 부문": "https://www.naver.com/",
-      "복지 부문": "https://www.naver.com/",
-      "소통 부문": "https://www.naver.com/",
-    },
+    "총학생회 소개": "/student-council",
+    조직도: "/organization-chart",
+    공약사항: "/promises",
   };
 
   return (
@@ -33,34 +28,31 @@ function App() {
 function AppContent({ data, title }) {
   const location = useLocation(); // 현재 경로 추적
   const hideSidebar = location.pathname === "/";
+
   return (
     <div>
       <TopBarComponent
         style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 2 }}
       />
-      {/* 메인 페이지가 아닌 경우에만 사이드바를 렌더링 */}
+      {/* 메인 페이지와 다른 경로에서 사이드바 및 컨텐츠 표시 */}
       {!hideSidebar && (
-        <Sidebar
-          title={title}
-          data={data}
-          style={{ position: "fixed", top: "60px", left: 0, zIndex: 1 }}
-        />
+        <MainContainer sidebarTitle={title} sidebarData={data} />
       )}
       <Routes>
-        {/* 기본 경로인 /에 MainPage 컴포넌트 설정 */}
+        {/* 기본 경로 */}
         <Route path="/" element={<MainPage />} />
-
-        {/* 사이드바가 포함된 다른 페이지들 */}
+        {/* 학생회 관련 페이지 */}
         <Route
           path="/student-council"
-          element={<Link to="https://www.naver.com/">총학생회</Link>}
+          element={<div>총학생회 소개 페이지입니다.</div>}
         />
         <Route
-          path="/student-organizations"
-          element={<Link to="https://www.naver.com/">학생자치기구</Link>}
+          path="/organization-chart"
+          element={<div>조직도 페이지입니다.</div>}
         />
+        <Route path="/promises" element={<div>공약사항 페이지입니다.</div>} />
       </Routes>
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 }
