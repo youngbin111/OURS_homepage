@@ -26,7 +26,12 @@ const SidebarWrapper = styled.div`
 `;
 
 const MainContent = styled.main`
-  flex: 3; /* 메인 콘텐츠 너비 */
+  flex: 3;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* 중앙 정렬 */
+  align-items: center; /* 수직 중앙 정렬 */
+  min-height: 400px; /* 최소 높이 설정 */
 `;
 
 const MainContainer = ({ sidebarTitle, sidebarData }) => {
