@@ -3,35 +3,33 @@ import styled from "styled-components";
 import logoImage from "../../assets/icon/oursLogo.png";
 import React, { useState } from "react";
 
-// 네이비 상단바 스타일 (로그인 & 홈 버튼)
 const NavyBar = styled.div`
+  position: fixed;
   background-color: #071d49;
   color: white;
   padding: 10px 5px;
   display: flex;
-  align-items: center;
+  //align-items: center;
   justify-content: space-between;
-  //position: relative;
-  //top: 0;
-  //left: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 1000; 
+  top: 0;
+  left: 0; 
 `;
 
-// 흰색 상단바 스타일 (메뉴 & 로고)
 const WhiteBar = styled.div`
+  position: fixed;
   background-color: white;
   padding: 9px 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  //position: relative;
-  //top: 40px;
-  //left: 0;
   width: 100%;
-  z-index: 999;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  top: 40px;
+  left: 0; 
 `;
+
 
 // 네이비 바 버튼 스타일 (Login, Home)
 const NavyButton = styled(Link)`
@@ -87,6 +85,7 @@ const SubMenuContainer = styled.div`
   padding: 20px 0;
   justify-content: space-between;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  z-index:999;
 `;
 
 // 하위 메뉴 박스 스타일
@@ -228,9 +227,10 @@ const WhiteBarComponent = () => {
 
 const TopBarComponent = () => (
   <>
-    <NavyBarComponent />
-    <WhiteBarComponent />
+    <NavyBarComponent style={{ position: "relative"}} />
+    <WhiteBarComponent style={{ position: "relative" }} />
   </>
 );
+
 
 export default TopBarComponent;

@@ -20,7 +20,7 @@ const BackgroundImage = styled.div`
   background-size: 100% auto; //화면 꽉채우기
   //background-position: center;
   background-repeat: no-repeat; //화면 가운데에 이미지
-  z-index: -1; //상단바 뒤에 이미지->굳이 필요 없을듯 밑에 배치함
+  z-index: 1; //상단바 뒤에 이미지->굳이 필요 없을듯 밑에 배치함
 `;
 
 const MainPageContent = styled.div`

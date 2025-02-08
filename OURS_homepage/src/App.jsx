@@ -25,6 +25,7 @@ import Meetings from "./pages/datum/meetings.jsx";//회의록
 import StudentFee from "./pages/datum/studentFee.jsx";//총학생회비
 import ClassFee from "./pages/datum/classFee.jsx";//자치회비(과학생회비)
 import Club from "./pages/datum/club.jsx";//동아리리
+import MainContainer from "./components/layout/MainContainer";
 
 
 function App() {
@@ -50,14 +51,17 @@ function App() {
 function AppContent({ data, title }) {
   const location = useLocation(); // 현재 경로 추적
   const hideSidebar = location.pathname === "/"; 
-  const hideHeart = location.pathname === "/";
+  const hideMainContainer = location.pathname === "/";
 
   return (
     <div>
-      <TopBarComponent style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 2 }} />
+      <TopBarComponent />
       {/* 메인 페이지가 아닌 경우에만 사이드바를 렌더링 */}
-      {!hideSidebar && <Sidebar title={title} data={data} style={{ position: "fixed", top: "60px", left: 0, zIndex: 1 }}  />}
-      {!hideHeart && <Heart>
+      
+      {!hideSidebar && (
+        <MainContainer sidebarTitle={title} sidebarData={data} />
+      )}
+      {/*{!hideMainContainer && <Heart>*/}
       <Routes>
         {/* 기본 경로인 /에 MainPage 컴포넌트 설정 */}
         <Route path="/" element={<MainPage />} />
@@ -84,7 +88,6 @@ function AppContent({ data, title }) {
         <Route path="/datum/club" element={<Club />} />
 
       </Routes>
-      </Heart>}
       <Footer></Footer>
     </div>
     
