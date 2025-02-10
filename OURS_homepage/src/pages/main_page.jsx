@@ -1,10 +1,11 @@
-import React from "react";
 import styled from "styled-components";
 import backgroundImage from "../assets/mainpage_background.png"; // 이미지 경로 import
+import TopBarComponent from "../components/layout/TopBar";
+import Footer from "../components/layout/Footer";
 
 const MainPageContainer = styled.div`
   position: relative;
-  height: 100vh; /* 상단바 높이를 제외한 전체 화면 */
+  height: calc(100vh - 80px); /* 상단바 높이를 제외한 전체 화면 */
   width: 100vw;
   overflow: hidden;
 `;
@@ -33,16 +34,18 @@ const MainPageContent = styled.div`
   font-size: 2rem;
   font-weight: bold;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  padding-top: 80px; 
 `;
 
 const MainPage = () => {
   return (
     <MainPageContainer>
+      <TopBarComponent></TopBarComponent>
       <BackgroundImage />
       <MainPageContent></MainPageContent>
+      <Footer></Footer>
     </MainPageContainer>
   );
 };
 
 export default MainPage;
-

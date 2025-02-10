@@ -28,6 +28,7 @@ const WhiteBar = styled.div`
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   top: 40px;
   left: 0; 
+  z-index : 1100;
 `;
 
 

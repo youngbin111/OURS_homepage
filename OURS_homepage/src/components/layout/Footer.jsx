@@ -5,7 +5,6 @@ const StyledFooter = styled.footer`
   bottom: 0; /* 화면의 최하단에 위치 */
   left: 0; /* 화면의 왼쪽 끝에 위치 */
   width: 100%; /* 화면 너비를 꽉 채움 */
-  
   background-color: #373737; /* 배경색 설정 */
   color: white; /* 텍스트 색상 */
   text-align: center; /* 텍스트 중앙 정렬 */

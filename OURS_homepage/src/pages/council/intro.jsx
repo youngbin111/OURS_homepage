@@ -1,11 +1,23 @@
-//학생회 소개개
+import TopBarComponent from "../../components/layout/TopBar";
+import Footer from "../../components/layout/Footer";
+import MainContainer from "../../components/layout/MainContainer";
+
+//학생회 소개
 
 const Intro = () => {
-    return (
-      <div>
-        <h1>버스 페이지</h1>
-      </div>
-    );
+  const title = "총학생회";
+  const data = {
+    소개: "/student-council",
+    조직도: "/organization-chart",
+    공약사항: "/promises",
   };
-  
-  export default Intro;
+  return (
+    <>
+      <TopBarComponent />
+      <MainContainer sidebarTitle={title} sidebarData={data} />
+      <Footer />
+    </>
+  );
+};
+
+export default Intro;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Heart from "./Heart";
-import Sidebar from "./SideBar";
+import Sidebar from "./Sidebar";
 
 const Container = styled.div`
   max-width: 1200px; /* 최대 너비 설정 */
